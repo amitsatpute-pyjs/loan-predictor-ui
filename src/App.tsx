@@ -1,26 +1,18 @@
 
 import './App.css'
-import AdditionalInfoForm from './components/AdditionalInfoForm';
 import Navbar from './components/Navbar'
-import SignIn from './components/SignIn'
-import UploadFiles from './components/UploadFiles'
+import StepperForm from './components/StepperForm';
 import { SocketContext, socket } from './core/context/socket';
 
-
-
 function App() {
-
-
   return (
     <SocketContext.Provider value={socket}>
-
-      <Navbar></Navbar>
-      <SignIn></SignIn>
-      <UploadFiles></UploadFiles>
-      <AdditionalInfoForm></AdditionalInfoForm>
-
+       <Navbar></Navbar>   
+       <div className='py-10'>
+       <StepperForm></StepperForm> 
+        </div> 
+      
     </SocketContext.Provider>
-
 
   )
 }
