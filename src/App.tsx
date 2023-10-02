@@ -7,11 +7,8 @@ import { SocketContext, socket } from './core/context/socket';
 function App() {
   return (
     <SocketContext.Provider value={socket}>
-       <Navbar></Navbar>   
-       <div className='py-10'>
-       <StepperForm></StepperForm> 
-        </div> 
-      
+      <Navbar></Navbar>
+      <StepperForm></StepperForm>
     </SocketContext.Provider>
 
   )

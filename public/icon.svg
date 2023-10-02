@@ -1,10 +1,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-<svg width="109px" height="109px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#02dbf7">
+<svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000">
 <g id="SVGRepo_bgCarrier" stroke-width="0"/>
 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-<g id="SVGRepo_iconCarrier">
-<path d="M832 384l8 1.6-1.6 8 1.6 3.2-4.8 3.2-44.8 161.6-16-4.8 40-147.2-260.8 144-158.4 284.8-11.2-6.4-6.4 6.4-176-176 11.2-11.2 163.2 163.2 147.2-265.6-294.4-297.6 11.2-11.2v-8h9.6l3.2-3.2 3.2 3.2L664 208l1.6 16-395.2 22.4 278.4 278.4 276.8-153.6 6.4 12.8z" fill="#ebf0f0"/>
-<path d="M896 384c0 35.2-28.8 64-64 64s-64-28.8-64-64 28.8-64 64-64 64 28.8 64 64z m-656-32c-62.4 0-112-49.6-112-112s49.6-112 112-112 112 49.6 112 112-49.6 112-112 112z m304 336c-80 0-144-64-144-144s64-144 144-144 144 64 144 144-64 144-144 144z m-224 144c0-35.2 28.8-64 64-64s64 28.8 64 64-28.8 64-64 64-64-28.8-64-64z m-144-176c0-17.6 14.4-32 32-32s32 14.4 32 32-14.4 32-32 32-32-14.4-32-32z m448-440c0-22.4 17.6-40 40-40s40 17.6 40 40-17.6 40-40 40-40-17.6-40-40zM736 560c0-27.2 20.8-48 48-48s48 20.8 48 48-20.8 48-48 48-48-20.8-48-48z" fill="#8ae3f5"/>
-</g>
+<g id="SVGRepo_iconCarrier"> <g fill="none" fill-rule="evenodd" transform="translate(5 3)"> <g fill="#0b306a"> <path d="m7 0v2h-4.97775531v14h4.97775531v2h-5.34579412c-.86625962 0-1.57584646-.7269806-1.6481402-1.6452719l-.00606568-.1547281v-14.4c0-.99.74813331-1.8 1.66251847-1.8z" fill-rule="nonzero"/> <path d="m4 12.5h3v1.5h-3z" fill-rule="nonzero"/> <path d="m4 9.5h3v1.5h-3z" fill-rule="nonzero"/> <path d="m4 6.5h3v1.5h-3z" fill-rule="nonzero"/> <circle cx="11.5" cy="16.5" r="1.5" transform="matrix(1 0 0 -1 0 33)"/> <circle cx="13.5" cy="7.5" r="1.5" transform="matrix(1 0 0 -1 0 15)"/> <circle cx="10.5" cy="2.5" r="1.5"/> </g> <path d="m8 7.5h.81417625c1.91570885 0 1.67624525-.7032967 1.67624525-4" stroke="#0b306a"/> <path d="m8 10.4938462h.81279457c3.77710423 0 4.73333313.2215384 4.68552163-1.9938462" stroke="#0b306a"/> <path d="m8 15.4916974h.51704781c2.78062219.0061472 3.01104309.2212997 2.98062859-1.9916974" stroke="#0b306a" transform="matrix(1 0 0 -1 0 29)"/> </g> </g>
 </svg>
