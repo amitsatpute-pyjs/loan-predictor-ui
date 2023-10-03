@@ -6,13 +6,14 @@ import MessageCard from "./MessageCard"
 
 const StepperForm = () => {
     const [sktLoanStatusId, setSktLoanStatusId] = useState("")
+    const [sktAdditionalInfo, setSktAdditionalInfo] = useState("")
     const [currentComponent, setCurrentComponentState] = useState(0)
     const steps = ["Verify_user", "Upload_document", "Additional_Info", "Result"]
 
     const components: any = {
         0: <SignIn gotoState={setCurrentComponentState} />,
-        1: <UploadFiles gotoState={setCurrentComponentState} />,
-        2: <AdditionalInfoForm gotoState={setCurrentComponentState} setSktId={setSktLoanStatusId} />,
+        1: <UploadFiles gotoState={setCurrentComponentState} setSktId={setSktAdditionalInfo} />,
+        2: <AdditionalInfoForm gotoState={setCurrentComponentState} setSktId={setSktLoanStatusId} sktId={sktAdditionalInfo} />,
         3: <MessageCard gotoState={setCurrentComponentState} sktId={sktLoanStatusId} />
     }
 
