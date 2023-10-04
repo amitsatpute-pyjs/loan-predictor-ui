@@ -8,7 +8,7 @@ const StepperForm = () => {
     const [sktLoanStatusId, setSktLoanStatusId] = useState("")
     const [sktAdditionalInfo, setSktAdditionalInfo] = useState("")
     const [currentComponent, setCurrentComponentState] = useState(0)
-    const steps = ["Verify_user", "Upload_document", "Additional_Info", "Result"]
+    const steps = ["Verify_user", "Upload_documents", "Additional_Info", "Result"]
 
     const components: any = {
         0: <SignIn gotoState={setCurrentComponentState} />,
