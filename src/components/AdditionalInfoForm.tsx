@@ -6,15 +6,15 @@ const AdditionalInfoForm = (props: any) => {
     const socket = useContext(SocketContext);
     const [isLoading, setIsLoading] = useState(true)
     const [formValues, setFormValues] = useState({
-        name: "",
+        Name: "",
         address: "",
-        accountNumber: "",
+        accountNo: "",
         aadhar: "",
         pan: "",
         loanTerm: "",
         cibil: "",
         income: "",
-        bankBalance: "",
+        bankbalance: "",
         education: "",
         jobType: "",
         dependents: "",
@@ -58,7 +58,7 @@ const AdditionalInfoForm = (props: any) => {
                 <h5 className="text-xl font-medium text-gray-900 dark:text-white">Additional Information</h5>
                 <form className="py-10" onSubmit={handleSubmit} >
                     <div className="relative z-0 w-full mb-6 group">
-                        <input value={formValues.name} type="text" name="floating_name" id="floating_name" onChange={(e) => setFormValues({ ...formValues, name: e.target.value })} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                        <input value={formValues.Name} type="text" name="floating_name" id="floating_name" onChange={(e) => setFormValues({ ...formValues, name: e.target.value })} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                         <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Name</label>
                     </div>
                     <div className="relative z-0 w-full mb-6 group">
@@ -76,7 +76,7 @@ const AdditionalInfoForm = (props: any) => {
                             <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">PAN Number</label>
                         </div>
                         <div className="relative z-0 w-full mb-6 group">
-                            <input value={formValues.accountNumber} type="number" name="floating_account_number" id="floating_account_number" onChange={(e) => setFormValues({ ...formValues, accountNumber: e.target.value })} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                            <input value={formValues.accountNo} type="number" name="floating_account_number" id="floating_account_number" onChange={(e) => setFormValues({ ...formValues, accountNumber: e.target.value })} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                             <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Account Number</label>
                         </div>
                     </div>
@@ -87,7 +87,7 @@ const AdditionalInfoForm = (props: any) => {
                             <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Income (Yearly)</label>
                         </div>
                         <div className="relative z-0 w-full mb-6 group">
-                            <input value={formValues.bankBalance} type="number" name="floating_bank_balance" id="floating_bank_balance" onChange={(e) => setFormValues({ ...formValues, bankBalance: e.target.value })} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                            <input value={formValues.bankbalance} type="number" name="floating_bank_balance" id="floating_bank_balance" onChange={(e) => setFormValues({ ...formValues, bankBalance: e.target.value })} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                             <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Bank Balance</label>
                         </div>
                         <div className="relative z-0 w-full mb-6 group">

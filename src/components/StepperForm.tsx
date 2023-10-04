@@ -20,7 +20,7 @@ const StepperForm = () => {
     const componentsInfo: any = {
         0: "Please use your mobile number for accessing this platform.",
         1: "Here you need to upload your document.(Aadhar, PAN, Bank statement)",
-        2: "Please check you information is correct ot not. You can edit your information.",
+        2: "Please check you information is correct or not. You can edit your information.",
         3: "Result",
 
     }
