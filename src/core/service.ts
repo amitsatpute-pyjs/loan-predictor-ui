@@ -1,4 +1,4 @@
-const backendUrl = "http://127.0.01:5000"
+const backendUrl = "http://172.25.25.98:5000"
 
 
 export const uploadFilesService = async (formData:any): Promise<any> => { 
