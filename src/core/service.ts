@@ -1,6 +1,8 @@
-const backendUrl = "http://127.0.01:5000"
+// const backendUrl = import.meta.env.VITE_BACKEND_SERVICE
+const backendUrl = process.env.VITE_BACKEND_SERVICE
 
 
+console.log("backendurl::",backendUrl)
 export const uploadFilesService = async (formData:any): Promise<any> => { 
 
     const resp = await fetch(backendUrl + '/uploadfiles', {
@@ -12,7 +14,7 @@ export const uploadFilesService = async (formData:any): Promise<any> => {
 }
 
 export const getUserInfo = async (): Promise<any> => { 
-
+    
     const resp = await fetch(backendUrl + '/getinfo', {
             method: 'GET'            
         })          

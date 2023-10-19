@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react"
+import { useState } from "react"
 import { uploadFilesService } from "../core/service"
-import { SocketContext } from "../core/context/socket";
+
 
 
 const UploadFiles = (props: any): JSX.Element => {
