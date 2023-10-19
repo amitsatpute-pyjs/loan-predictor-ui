@@ -1,5 +1,5 @@
 // const backendUrl = import.meta.env.VITE_BACKEND_SERVICE
-const backendUrl = process.env.VITE_BACKEND_SERVICE
+const backendUrl = "server-service:80"
 
 
 console.log("backendurl::",backendUrl)
