@@ -39,6 +39,8 @@ export const verifyOTP = async (otp:number): Promise<any> => {
     const data:any = {
         otp:otp
     }
+    console.log(backendUrl,"backendurl")
+
     const resp = await fetch(backendUrl + '/verifyotp', {
             method: 'POST',
             headers: {
