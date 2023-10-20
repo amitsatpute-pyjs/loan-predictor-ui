@@ -13,7 +13,7 @@ const MessageCard = (props: any) => {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        socket.on(props.sktId, (data: any) => {
+        socket.on(props.sktId, (data: any) => {            
             setLoanStatus(data)
             setIsLoading(false)
         })
@@ -53,7 +53,7 @@ const MessageCard = (props: any) => {
  
                 <ul className=" list-disc max-w-xl p-6 font-normal text-gray-700 dark:text-gray-400">
                     {
-                        loanStatus.reason.map((d: any) => (
+                        loanStatus.reason && loanStatus.reason.map((d: any) => (
                             <li>{d}</li>
                         ))
 

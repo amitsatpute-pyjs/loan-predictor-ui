@@ -33,7 +33,7 @@ const AdditionalInfoForm = (props: any) => {
     // }, [])
 
     useEffect(() => {
-        socket.on(props.sktId, (data: any) => {
+        socket.on(props.sktId, (data: any) => {          
             setFormValues({ ...formValues, ...data })
             setIsLoading(false)
         })
