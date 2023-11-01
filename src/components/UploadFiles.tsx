@@ -1,10 +1,12 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { uploadFilesService } from "../core/service"
+import { UserDataContext } from "../core/context/UserData";
 
 
 
 const UploadFiles = (props: any): JSX.Element => {
-
+    const userData = useContext(UserDataContext);
+    console.log("upload::", userData)
     const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
     const [UploadedFileNames, setUploadedFileNames] = useState([]);
     const [isLoading, setIsLoading] = useState(false)

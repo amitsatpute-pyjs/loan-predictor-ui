@@ -3,18 +3,20 @@ import SignIn from "./SignIn"
 import UploadFiles from "./UploadFiles"
 import AdditionalInfoForm from "./AdditionalInfoForm"
 import MessageCard from "./MessageCard"
+import ReviewForm from "./ReviewForm"
 
 const StepperForm = () => {
     const [sktLoanStatusId, setSktLoanStatusId] = useState("")
     const [sktAdditionalInfo, setSktAdditionalInfo] = useState("")
     const [currentComponent, setCurrentComponentState] = useState(0)
-    const steps = ["Verify_user", "Upload_documents", "Additional_Info", "Result"]
+    const steps = ["Verify_user", "Upload_documents", "Additional_Info", "Result", "Review"]
 
     const components: any = {
         0: <SignIn gotoState={setCurrentComponentState} />,
         1: <UploadFiles gotoState={setCurrentComponentState} setSktId={setSktAdditionalInfo} />,
         2: <AdditionalInfoForm gotoState={setCurrentComponentState} setSktId={setSktLoanStatusId} sktId={sktAdditionalInfo} />,
-        3: <MessageCard gotoState={setCurrentComponentState} sktId={sktLoanStatusId} />
+        3: <MessageCard gotoState={setCurrentComponentState} sktId={sktLoanStatusId} />,
+        4: <ReviewForm gotoState={setCurrentComponentState} sktId={sktLoanStatusId} />
     }
 
     const componentsInfo: any = {
@@ -22,6 +24,7 @@ const StepperForm = () => {
         1: "Here you need to upload your document.(National Identity Number, TIN, Bank statement)",
         2: "Please check you information is correct or not. You can edit your information.",
         3: "Result",
+        4: "Your loan application is in review stage. Please use loan ID for tracking loan application status."
 
     }
 
@@ -29,7 +32,8 @@ const StepperForm = () => {
         0: "/mobile.svg",
         1: "/doc.svg",
         2: "/user.svg",
-        3: "/result.svg"
+        3: "/result.svg",
+        4:""
     }
 
 
@@ -43,7 +47,7 @@ const StepperForm = () => {
     return (
         <>
             <div className="max-w-screen-xl mx-auto p-4 py-12">
-                <div className="grid grid-cols-[35%_65%] w-full h-640 gap-3">
+                <div className="grid grid-cols-[25%_75%] w-full h-640 gap-3">
 
                     <div>
                         <div className="text-center py-11 my-10">

@@ -1,8 +1,11 @@
 import { useContext, useEffect, useState } from "react"
 
 import { SocketContext } from "../core/context/socket";
+import { UserDataContext } from "../core/context/UserData";
 
 const MessageCard = (props: any) => {
+    const userData = useContext(UserDataContext);
+    console.log("Result::", userData)
     const socket = useContext(SocketContext);
     const [loanStatus, setLoanStatus] = useState({
         status: "",
@@ -21,7 +24,7 @@ const MessageCard = (props: any) => {
 
 
     const handleReset = () => {
-        props.gotoState(0)
+        props.gotoState(4)
     }
 
     const tickSvg = <span>
@@ -59,7 +62,7 @@ const MessageCard = (props: any) => {
 
                     }
                 </ul>
-                <button type="button" className="my-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={handleReset}>Reset</button>
+                <button type="button" className="my-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={handleReset}>Apply</button>
 
             </div> :
                 <div>

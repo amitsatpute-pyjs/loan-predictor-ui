@@ -1,8 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { getLoanStatus } from "../core/service";
 import { SocketContext } from "../core/context/socket";
+import { UserDataContext } from "../core/context/UserData";
 
 const AdditionalInfoForm = (props: any) => {
+    const userData = useContext(UserDataContext);
+    console.log("Additional form::", userData)
     const socket = useContext(SocketContext);
     const [isLoading, setIsLoading] = useState(true)
     const [formValues, setFormValues] = useState({
@@ -19,8 +22,8 @@ const AdditionalInfoForm = (props: any) => {
         jobType: "",
         dependents: "",
         loanAmount: "",
-        cashinflow:"",
-        cashoutflow:""
+        cashinflow: "",
+        cashoutflow: ""
     })
 
     // useEffect(() => {
@@ -35,7 +38,7 @@ const AdditionalInfoForm = (props: any) => {
     // }, [])
 
     useEffect(() => {
-        socket.on(props.sktId, (data: any) => {          
+        socket.on(props.sktId, (data: any) => {
             setFormValues({ ...formValues, ...data })
             setIsLoading(false)
         })
@@ -46,6 +49,7 @@ const AdditionalInfoForm = (props: any) => {
         e.preventDefault()
         async function getInfo() {
             const task = await getLoanStatus(formValues)
+            Object.assign(userData, formValues)
             props.setSktId(task.taskId)
 
         }
@@ -100,15 +104,15 @@ const AdditionalInfoForm = (props: any) => {
                     <div className="grid md:grid-cols-2 md:gap-6">
                         <div className="relative z-0 w-full mb-6 group">
                             <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Education</label>
-                            <select onChange={(e)=>setFormValues({ ...formValues, education: e.target.value })} id="countries" className="py-2.5 px-0 my-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 peer">
+                            <select onChange={(e) => setFormValues({ ...formValues, education: e.target.value })} id="countries" className="py-2.5 px-0 my-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 peer">
                                 <option selected disabled>-- select education --</option>
                                 <option value={0}>Graduated</option>
-                                <option value={1}>Non graduated</option>                              
+                                <option value={1}>Non graduated</option>
                             </select>
                         </div>
                         <div className="relative z-0 w-full mb-6 group">
                             <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Job Type</label>
-                            <select onChange={(e)=>setFormValues({ ...formValues, jobType: e.target.value })} id="countries" className="py-2.5 px-0 my-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 peer">
+                            <select onChange={(e) => setFormValues({ ...formValues, jobType: e.target.value })} id="countries" className="py-2.5 px-0 my-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 peer">
                                 <option selected>-- Select job type --</option>
                                 <option value={0}>Salaried</option>
                                 <option value={1}>self-employed</option>
@@ -124,7 +128,7 @@ const AdditionalInfoForm = (props: any) => {
                             <input value={formValues.cashoutflow} type="text" name="floating_cashoutflow" id="floating_cashoutflow" onChange={(e) => setFormValues({ ...formValues, cashoutflow: e.target.value })} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                             <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Cash outflow</label>
                         </div>
-                       
+
                     </div>
                     <div className="grid md:grid-cols-3 md:gap-6">
                         <div className="relative z-0 w-full mb-6 group">
