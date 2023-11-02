@@ -42,8 +42,7 @@ export const getLoanStatus = async (info: Object): Promise<any> => {
 export const verifyOTP = async (otp: number): Promise<any> => {
     const data: any = {
         otp: otp
-    }
-    console.log(backendUrl, "backendurl")
+    }   
 
     const resp = await fetch(backendUrl + '/verifyotp', {
         method: 'POST',
@@ -54,4 +53,64 @@ export const verifyOTP = async (otp: number): Promise<any> => {
     })
     const resp_data = await resp.json()
     return resp_data
+}
+
+export const applyLoan = async (data: any): Promise<any> => {   
+
+    const resp = await fetch(backendUrl + '/applyloan', {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    const resp_data = await resp.json()
+   
+    return resp_data
+}
+
+
+export const getLoanIdDetails = async (id: string): Promise<any> => {
+
+    const resp = await fetch(backendUrl + '/getloaniddetails/' + id, {
+        method: 'get'
+    })
+    const data = await resp.json()
+    
+    return data
+}
+
+export const updateLoanStatus = async (data: any): Promise<any> => {   
+
+    const resp = await fetch(backendUrl + '/updateloanstatus', {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    const resp_data = await resp.json()
+    
+    return resp_data
+}
+
+export const getLoanStatusTracker = async (id: string): Promise<any> => {
+
+    const resp = await fetch(backendUrl + '/trackloanid/' + id, {
+        method: 'get'
+    })
+    const data = await resp.json()
+ 
+    return data
+}
+
+
+export const getLoanApplications = async (): Promise<any> => {
+
+    const resp = await fetch(backendUrl + '/getloanapplications', {
+        method: 'GET'
+    })
+    const data = await resp.json()
+    
+    return data
 }

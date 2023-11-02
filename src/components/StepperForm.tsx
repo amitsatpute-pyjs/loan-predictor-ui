@@ -16,7 +16,7 @@ const StepperForm = () => {
         1: <UploadFiles gotoState={setCurrentComponentState} setSktId={setSktAdditionalInfo} />,
         2: <AdditionalInfoForm gotoState={setCurrentComponentState} setSktId={setSktLoanStatusId} sktId={sktAdditionalInfo} />,
         3: <MessageCard gotoState={setCurrentComponentState} sktId={sktLoanStatusId} />,
-        4: <ReviewForm gotoState={setCurrentComponentState} sktId={sktLoanStatusId} />
+        4: <ReviewForm />
     }
 
     const componentsInfo: any = {
@@ -33,7 +33,7 @@ const StepperForm = () => {
         1: "/doc.svg",
         2: "/user.svg",
         3: "/result.svg",
-        4:""
+        4: ""
     }
 
 

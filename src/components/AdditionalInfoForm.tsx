@@ -5,7 +5,6 @@ import { UserDataContext } from "../core/context/UserData";
 
 const AdditionalInfoForm = (props: any) => {
     const userData = useContext(UserDataContext);
-    console.log("Additional form::", userData)
     const socket = useContext(SocketContext);
     const [isLoading, setIsLoading] = useState(true)
     const [formValues, setFormValues] = useState({

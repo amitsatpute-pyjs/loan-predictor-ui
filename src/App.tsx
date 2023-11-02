@@ -4,8 +4,10 @@ import Navbar from './components/Navbar'
 import { SocketContext, socket } from './core/context/socket';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from './pages/home';
-import { AdminPage } from './pages/admin';
+import { AdminPage } from './pages/Admin';
 import { UserDataContext, userDataContext } from './core/context/UserData';
+import { DetailsPage } from './pages/Details';
+import { Tracker } from './pages/Tracker';
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/track" element={<Tracker />} />
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/details/:loanid" element={<DetailsPage />} />
           </Routes>
         </BrowserRouter>
       </UserDataContext.Provider>

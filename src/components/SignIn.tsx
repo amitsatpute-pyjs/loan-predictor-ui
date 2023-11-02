@@ -3,8 +3,7 @@ import { verifyOTP } from "../core/service"
 import { UserDataContext } from "../core/context/UserData";
 
 const SignIn = (props: any): JSX.Element => {
-    const userData = useContext(UserDataContext);
-    console.log("sign in::", userData)
+    const userData = useContext(UserDataContext) as any;   
     const [otpFlag, setOtpFlag] = useState(false)
     const [otp, setOTP] = useState<number | null>(null)
     const [contact, setContact] = useState("")
@@ -16,15 +15,15 @@ const SignIn = (props: any): JSX.Element => {
     const handleEnter = async () => {
         if (otp) {
             const verify = await verifyOTP(otp)
-            if (verify.status){
+            if (verify.status) {
                 userData.contact = contact
                 props.gotoState(1)
-                
-            }else{
+
+            } else {
                 alert("Wrong OTP")
             }
-            
-        }   
+
+        }
 
     }
 
@@ -35,7 +34,7 @@ const SignIn = (props: any): JSX.Element => {
                     <h5 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h5>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your mobile number</label>
-                        <input type="number" name="mobile" id="mobile"  onChange={(e) => setContact(e.target.value )} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="9876543210" required />
+                        <input type="number" name="mobile" id="mobile" onChange={(e) => setContact(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="9876543210" required />
                     </div>
                     {!otpFlag && <div>
                         <button type="button" className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={handleSendOTP}>Send OTP</button>

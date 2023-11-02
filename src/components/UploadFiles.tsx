@@ -1,12 +1,8 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { uploadFilesService } from "../core/service"
-import { UserDataContext } from "../core/context/UserData";
 
 
-
-const UploadFiles = (props: any): JSX.Element => {
-    const userData = useContext(UserDataContext);
-    console.log("upload::", userData)
+const UploadFiles = (props: any): JSX.Element => {    
     const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
     const [UploadedFileNames, setUploadedFileNames] = useState([]);
     const [isLoading, setIsLoading] = useState(false)
@@ -44,7 +40,6 @@ const UploadFiles = (props: any): JSX.Element => {
             formData.append('files', selectedFiles[i]);
         }
         const task = await uploadFilesService(formData)
-        console.log(task)
         // setSktTopic(task.taskId)
         props.setSktId(task.taskId)
         props.gotoState(2)

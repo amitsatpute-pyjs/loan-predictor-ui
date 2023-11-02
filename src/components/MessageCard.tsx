@@ -2,10 +2,10 @@ import { useContext, useEffect, useState } from "react"
 
 import { SocketContext } from "../core/context/socket";
 import { UserDataContext } from "../core/context/UserData";
+import { applyLoan } from "../core/service";
 
 const MessageCard = (props: any) => {
     const userData = useContext(UserDataContext);
-    console.log("Result::", userData)
     const socket = useContext(SocketContext);
     const [loanStatus, setLoanStatus] = useState({
         status: "",
@@ -16,15 +16,25 @@ const MessageCard = (props: any) => {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        socket.on(props.sktId, (data: any) => {            
+        socket.on(props.sktId, (data: any) => {
+            Object.assign(userData, { reason: data.reason })
             setLoanStatus(data)
             setIsLoading(false)
         })
     }, [props.sktId])
 
 
-    const handleReset = () => {
-        props.gotoState(4)
+    const handleApply = () => {
+
+        applyLoan(userData)
+            .then(data => {
+                Object.assign(userData, data)
+            })
+            .then(() => {
+                props.gotoState(4)
+            })
+
+
     }
 
     const tickSvg = <span>
@@ -53,7 +63,7 @@ const MessageCard = (props: any) => {
                     {loanStatus.status ? tickSvg : warningSvg}
                     <h5 className="my-1 mx-2 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{loanStatus.message}</h5>
                 </div>
- 
+
                 <ul className=" list-disc max-w-xl p-6 font-normal text-gray-700 dark:text-gray-400">
                     {
                         loanStatus.reason && loanStatus.reason.map((d: any) => (
@@ -62,7 +72,7 @@ const MessageCard = (props: any) => {
 
                     }
                 </ul>
-                <button type="button" className="my-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={handleReset}>Apply</button>
+                {loanStatus.status && <button type="button" className="my-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={handleApply}>Apply</button>}
 
             </div> :
                 <div>
