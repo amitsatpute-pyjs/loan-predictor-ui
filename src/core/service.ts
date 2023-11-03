@@ -30,7 +30,7 @@ export const getUserInfo = async (): Promise<any> => {
 
 export const getLoanStatus = async (info: Object): Promise<any> => {
 
-    const resp = await fetch(backendUrl + '/getLoanStatus', {
+    const resp = await fetch(backendUrl + '/getloanstatus', {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(info)
@@ -73,7 +73,7 @@ export const applyLoan = async (data: any): Promise<any> => {
 export const getLoanIdDetails = async (id: string): Promise<any> => {
 
     const resp = await fetch(backendUrl + '/getloaniddetails/' + id, {
-        method: 'get'
+        method: 'GET'
     })
     const data = await resp.json()
     

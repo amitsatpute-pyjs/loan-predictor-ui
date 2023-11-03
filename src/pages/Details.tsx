@@ -11,7 +11,9 @@ export function DetailsPage() {
     useEffect(() => {
         const loanId = params.loanid as string;
         async function getLoanIdInfo() {
-            const data = await getLoanIdDetails(loanId)            
+            const record = await getLoanIdDetails(loanId)   
+            console.log(record)  
+            const data = record.length >0 ?record[0]:[]
             const keys = Object.keys(data)           
             setFileds(keys)
             setUserData(data)

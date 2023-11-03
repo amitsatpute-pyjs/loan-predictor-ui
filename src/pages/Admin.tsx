@@ -8,6 +8,7 @@ export function AdminPage() {
     useEffect(() => {
         async function loanApplications() {
             const data = await getLoanApplications()
+            console.log(data)
             setLoanApplications(data)
         }
         loanApplications()
@@ -64,18 +65,18 @@ export function AdminPage() {
                                             {la.loanAmount}
                                         </td>
                                         <td className="px-6 py-4">
-                                            {la.status}
+                                            {la.loanStatus}
                                         </td>
                                         <td className="px-6 py-4 text-right justify-center">
 
                                             {
-                                                ["rejected", "pending"].includes(la.status.toLowerCase()) ?
+                                                ["rejected", "pending"].includes(la.loanStatus.toLowerCase()) ?
                                                     <a onClick={() => handleApprove(la.loanId, "Approved")} className="font-medium text-green-600 dark:text-blue-500 hover:underline  cursor-pointer">Approve</a>
                                                     :
                                                     <span className="font-medium text-gray-400 dark:text-blue-500">Approve</span>
                                             }
                                             {
-                                                ["approved", "pending"].includes(la.status.toLowerCase()) ?
+                                                ["approved", "pending"].includes(la.loanStatus.toLowerCase()) ?
                                                     <a onClick={() => handleApprove(la.loanId, "Rejected")} className="mx-4 font-medium text-red-600 dark:text-blue-500 hover:underline  cursor-pointer">Reject</a>
                                                     :
                                                     <span className="mx-4 font-medium text-gray-400 dark:text-blue-500">Reject</span>
