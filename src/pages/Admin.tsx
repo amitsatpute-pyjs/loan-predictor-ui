@@ -1,17 +1,30 @@
 import { useEffect, useState } from "react"
 import { getLoanApplications, updateLoanStatus } from "../core/service"
+import { useNavigate } from "react-router-dom";
 
 export function AdminPage() {
-
     const [loanApplications, setLoanApplications] = useState<any>([])
-
+    const navigate = useNavigate()
     useEffect(() => {
+        const authData = JSON.parse(sessionStorage.getItem('authData') as string)
+        console.log("authData::", authData)
         async function loanApplications() {
             const data = await getLoanApplications()
             console.log(data)
             setLoanApplications(data)
         }
-        loanApplications()
+        if (authData) {
+            if (authData.user) {
+                loanApplications()
+            } else {
+                navigate("/login")
+            }
+        }
+        else {
+            navigate("/login")
+        }
+
+
     }, [])
 
     const handleApprove = (id: string, state: string) => {

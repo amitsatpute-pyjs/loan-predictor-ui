@@ -1,7 +1,6 @@
 // const backendUrl = import.meta.env.VITE_BACKEND_SERVICE
 const backendUrl = "http://loanpredictor.com/api"
 
-
 console.log("backendurl::", backendUrl)
 const headers = {
     'Content-type': 'application/json',
@@ -112,5 +111,17 @@ export const getLoanApplications = async (): Promise<any> => {
     })
     const data = await resp.json()
     
+    return data
+}
+
+
+export const login = async (creds: Object): Promise<any> => {
+
+    const resp = await fetch(backendUrl + '/verifyadmin', {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(creds)
+    })
+    const data = await resp.json()
     return data
 }

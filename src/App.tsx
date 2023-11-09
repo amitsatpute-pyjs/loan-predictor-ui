@@ -8,6 +8,7 @@ import { AdminPage } from './pages/Admin';
 import { UserDataContext, userDataContext } from './core/context/UserData';
 import { DetailsPage } from './pages/Details';
 import { Tracker } from './pages/Tracker';
+import { LoginPage } from './pages/Login';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/track" element={<Tracker />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/details/:loanid" element={<DetailsPage />} />
           </Routes>
