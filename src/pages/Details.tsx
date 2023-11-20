@@ -5,29 +5,29 @@ import { getLoanIdDetails, updateLoanStatus } from "../core/service";
 export function DetailsPage() {
     const params = useParams();
     const navigate = useNavigate()
-    const [userData, setUserData] = useState<any>({})
-    const [fields, setFileds] = useState<Array<string>>([])
+    const [userData, setUserData] = useState<any>({})   
+    const personal = ["name", "aadhar", "address", "contact", "education", "jobType", "dependents", "bankbalance", "pan"]
+    const loanDetails = ["cibil", "accountNo", "loanAmount", "loanStatus", "loanTerm", "income", "cashinflow", "cashoutflow", "existingEmi"]
+
 
     useEffect(() => {
         const loanId = params.loanid as string;
         async function getLoanIdInfo() {
-            const record = await getLoanIdDetails(loanId)   
-            console.log(record)  
-            const data = record.length >0 ?record[0]:[]
-            const keys = Object.keys(data)           
-            setFileds(keys)
+            const record = await getLoanIdDetails(loanId)
+            console.log(record)
+            const data = record.length > 0 ? record[0] : []
             setUserData(data)
         }
         getLoanIdInfo()
     }, [])
 
-    const hangleGoBack=()=>{
+    const hangleGoBack = () => {
         navigate("/admin")
     }
 
-    const handleApprove = (state:string)=>{
+    const handleApprove = (state: string) => {
         async function loanStatus() {
-            await updateLoanStatus({loanId:userData.loanId,status: state})
+            await updateLoanStatus({ loanId: userData.loanId, status: state })
             hangleGoBack()
         }
         loanStatus()
@@ -64,15 +64,27 @@ export function DetailsPage() {
                         <div className="text-lg p-4 mb-4 " >
 
                             <button type="button" onClick={hangleGoBack} className="float-right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Go back</button>
-                            <button type="button" onClick={()=>handleApprove("Rejected")} className="float-right focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Reject</button>
-                            <button type="button" onClick={()=>handleApprove("Approved")} className="float-right focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Approve</button>
+                            <button type="button" onClick={() => handleApprove("Rejected")} className="float-right focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Reject</button>
+                            <button type="button" onClick={() => handleApprove("Approved")} className="float-right focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Approve</button>
                         </div>
                     </div>
                     <form className="py-5"  >
                         <div className="grid md:grid-cols-3 md:gap-1">
-                            {fields && fields.map((k: string) => (
+                            {personal.map((k: string) => (
                                 <>
-                                    {!(["loanid", "task_id", "reason"].includes(k.toLowerCase())) && <div className="relative z-0 w-full mb-6 group">
+                                    {<div className="relative z-0 w-full mb-6 group">
+                                        <span className="font-bold"> {stringFormater(k)} :</span><br />
+                                        <span>{userData[k]}</span>
+                                    </div>}
+                                </>
+                            ))}
+
+                        </div>
+                        <hr />
+                        <div className="grid md:grid-cols-3 md:gap-1" style={{ marginTop: "5px" }} >
+                            {loanDetails.map((k: string) => (
+                                <>
+                                    {<div className="relative z-0 w-full mb-6 group">
                                         <span className="font-bold"> {stringFormater(k)} :</span><br />
                                         <span>{userData[k]}</span>
                                     </div>}
