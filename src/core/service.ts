@@ -2,16 +2,23 @@
 const backendUrl = "http://loanpredictor.com/api"
 
 console.log("backendurl::", backendUrl)
-const headers = {
-    'Content-type': 'application/json',
+const BaseHeaders = {   
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "*",
     "Access-Control-Allow-Headers": "*"
 }
+
+const headers={
+    ...BaseHeaders,'Content-type': 'application/json',
+}
+
+
+
 export const uploadFilesService = async (formData: any): Promise<any> => {
 
     const resp = await fetch(backendUrl + '/uploadfiles', {
         method: 'POST',
+        headers: BaseHeaders,
         body: formData,
     })
     const data = await resp.json()
@@ -21,7 +28,8 @@ export const uploadFilesService = async (formData: any): Promise<any> => {
 export const getUserInfo = async (): Promise<any> => {
 
     const resp = await fetch(backendUrl + '/getinfo', {
-        method: 'GET'
+        method: 'GET',
+        headers: headers
     })
     const data = await resp.json()
     return data
@@ -45,9 +53,7 @@ export const verifyOTP = async (otp: number): Promise<any> => {
 
     const resp = await fetch(backendUrl + '/verifyotp', {
         method: 'POST',
-        headers: {
-            'Content-type': 'application/json',
-        },
+        headers: headers,
         body: JSON.stringify(data)
     })
     const resp_data = await resp.json()
@@ -58,9 +64,7 @@ export const applyLoan = async (data: any): Promise<any> => {
 
     const resp = await fetch(backendUrl + '/applyloan', {
         method: 'POST',
-        headers: {
-            'Content-type': 'application/json',
-        },
+        headers: headers,
         body: JSON.stringify(data)
     })
     const resp_data = await resp.json()
@@ -72,7 +76,8 @@ export const applyLoan = async (data: any): Promise<any> => {
 export const getLoanIdDetails = async (id: string): Promise<any> => {
 
     const resp = await fetch(backendUrl + '/getloaniddetails/' + id, {
-        method: 'GET'
+        method: 'GET',
+        headers: headers,
     })
     const data = await resp.json()
     
@@ -83,9 +88,7 @@ export const updateLoanStatus = async (data: any): Promise<any> => {
 
     const resp = await fetch(backendUrl + '/updateloanstatus', {
         method: 'POST',
-        headers: {
-            'Content-type': 'application/json',
-        },
+        headers: headers,
         body: JSON.stringify(data)
     })
     const resp_data = await resp.json()
@@ -96,7 +99,8 @@ export const updateLoanStatus = async (data: any): Promise<any> => {
 export const getLoanStatusTracker = async (id: string): Promise<any> => {
 
     const resp = await fetch(backendUrl + '/trackloanid/' + id, {
-        method: 'get'
+        method: 'get',
+        headers: headers,
     })
     const data = await resp.json()
  
@@ -107,7 +111,8 @@ export const getLoanStatusTracker = async (id: string): Promise<any> => {
 export const getLoanApplications = async (): Promise<any> => {
 
     const resp = await fetch(backendUrl + '/getloanapplications', {
-        method: 'GET'
+        method: 'GET',
+        headers: headers,
     })
     const data = await resp.json()
     
